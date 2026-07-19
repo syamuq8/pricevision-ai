@@ -13,5 +13,6 @@ echo [2/2] Opening application in default browser...
 start http://localhost:8000/
 echo.
 echo Launching server process...
+set PYTHONPATH=backend
 python app.py
 pause

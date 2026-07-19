@@ -2,9 +2,10 @@ import sys
 import os
 import uvicorn
 
-# Add backend directory to Python search path
+# Add backend directory to Python search path and environment variables
 backend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "backend"))
 sys.path.insert(0, backend_dir)
+os.environ["PYTHONPATH"] = backend_dir
 
 # Set working directory to backend folder so database and folders map correctly
 os.chdir(backend_dir)
