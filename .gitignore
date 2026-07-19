@@ -7,8 +7,8 @@ backend/uploads/*
 !backend/uploads/.gitkeep
 
 # Build outputs
-dist/
 build/
+!frontend/dist/
 
 # OS/IDE
 .DS_Store
