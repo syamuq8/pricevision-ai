@@ -278,7 +278,7 @@ export default function SearchResults({ searchData, onBack, onUpdateSearch }) {
             <span className="text-[10px] font-bold text-emerald-400 tracking-wider uppercase flex items-center gap-1">
               <TrendingDown size={12} /> Best Value
             </span>
-            <p className="text-xl font-extrabold text-slate-100">₹{recommendations.best_value?.price.toLocaleString()}</p>
+            <p className="text-xl font-extrabold text-slate-100">₹{recommendations.best_value?.price.toLocaleString('en-IN')}</p>
             <p className="text-xs text-slate-400">{recommendations.best_value?.site_name}: {recommendations.best_value?.reason}</p>
           </div>
           <div className="p-5 rounded-2xl bg-amber-950/10 border border-amber-900/20 space-y-2">
@@ -382,10 +382,10 @@ export default function SearchResults({ searchData, onBack, onUpdateSearch }) {
                 {/* Card Center: Pricing Details */}
                 <div className="my-4 space-y-1.5">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-black text-slate-100">₹{item.price.toLocaleString()}</span>
+                    <span className="text-2xl font-black text-slate-100">₹{item.price.toLocaleString('en-IN')}</span>
                     {item.discount > 0 && (
                       <>
-                        <span className="text-xs text-slate-500 line-through">₹{item.original_price.toLocaleString()}</span>
+                        <span className="text-xs text-slate-500 line-through">₹{item.original_price.toLocaleString('en-IN')}</span>
                         <span className="text-[10px] font-extrabold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">
                           {item.discount}% OFF
                         </span>
@@ -397,7 +397,7 @@ export default function SearchResults({ searchData, onBack, onUpdateSearch }) {
                     <span className="flex items-center gap-0.5 text-amber-400 font-bold">
                       <Star size={10} className="fill-amber-400" /> {item.rating}
                     </span>
-                    <span>({item.reviews_count.toLocaleString()} reviews)</span>
+                    <span>({item.reviews_count.toLocaleString('en-IN')} reviews)</span>
                   </div>
 
                   <div className="text-[10px] text-slate-500 pt-1 space-y-0.5">

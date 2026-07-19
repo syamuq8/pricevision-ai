@@ -133,7 +133,7 @@ export default function History({ onReRunSearch }) {
                     {record.query_val}
                   </h4>
                   <p className="text-[10px] text-slate-500 mt-0.5">
-                    Scanned on {new Date(record.created_at).toLocaleString()}
+                    Scanned on {new Date(record.created_at).toLocaleString('en-IN')}
                   </p>
                 </div>
               </div>

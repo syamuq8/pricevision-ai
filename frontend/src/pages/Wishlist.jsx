@@ -120,7 +120,7 @@ export default function Wishlist() {
                 </div>
                 
                 <div className="flex items-baseline gap-2">
-                  <span className="text-base font-black text-slate-100">₹{item.price?.toLocaleString()}</span>
+                  <span className="text-base font-black text-slate-100">₹{item.price?.toLocaleString('en-IN')}</span>
                   {item.discount > 0 && (
                     <span className="text-[10px] font-extrabold text-emerald-400 bg-emerald-500/10 px-1 rounded">
                       {item.discount}% OFF
