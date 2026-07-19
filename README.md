@@ -4,6 +4,11 @@ PriceVision AI is a full-stack, AI-powered product price comparison platform. Us
 
 ---
 
+### 🌐 Live Application Link
+🚀 **[https://pricevision-ai-1.onrender.com](https://pricevision-ai-1.onrender.com)**
+
+---
+
 ## Technical Stack
 * **Frontend**: React.js, Tailwind CSS, Framer Motion, Recharts, Lucide Icons, Vite
 * **Backend**: FastAPI, Python 3.11, Uvicorn, JSON/SQLite Database Engine, MongoDB Motor Client
