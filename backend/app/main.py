@@ -40,10 +40,38 @@ app.include_router(admin.router, prefix=settings.API_V1_STR)
 # Serve uploaded product images
 app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
 
+from fastapi.responses import FileResponse
+from fastapi import HTTPException
+
+# Serve static frontend build
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+
+if os.path.exists(frontend_dist):
+    assets_dir = os.path.join(frontend_dist, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
 @app.get("/")
 def read_root():
+    index_path = os.path.join(frontend_dist, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
     return {
-        "message": f"Welcome to {settings.PROJECT_NAME} Backend API!",
+        "message": f"Welcome to {settings.PROJECT_NAME} Backend API! (Frontend build missing)",
         "version": "1.0.0",
         "docs_url": "/docs"
     }
+
+@app.get("/{catchall:path}")
+async def serve_frontend(catchall: str):
+    # Prevent intercepting API routes or uploads
+    if (catchall.startswith("api") or 
+        catchall.startswith("docs") or 
+        catchall.startswith("openapi.json") or 
+        catchall.startswith("uploads")):
+        raise HTTPException(status_code=404, detail="Not Found")
+        
+    index_path = os.path.join(frontend_dist, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    raise HTTPException(status_code=404, detail="Frontend build index.html not found")
